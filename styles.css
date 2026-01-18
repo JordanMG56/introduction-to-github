@@ -20,6 +20,7 @@ body {
   color: var(--deep-green);
   background: var(--stone);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .site-header {
@@ -53,6 +54,19 @@ body {
   gap: 1.5rem;
 }
 
+.nav-links.is-open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  right: 24px;
+  background: rgba(245, 241, 234, 0.98);
+  padding: 1rem 1.5rem;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(13, 30, 24, 0.15);
+  animation: fadeInUp 0.4s ease;
+}
+
 .nav-links a {
   text-decoration: none;
   color: var(--deep-green);
@@ -84,6 +98,7 @@ body {
   padding: 4rem 1.5rem 5rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 .hero::before {
@@ -99,6 +114,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.headline {
+  animation: fadeInUp 0.9s ease both;
 }
 
 .eyebrow {
@@ -171,6 +190,7 @@ button.ghost {
   background: linear-gradient(140deg, rgba(16, 45, 34, 0.9), rgba(32, 89, 68, 0.7)),
     url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80") center/cover;
   box-shadow: 0 20px 60px var(--shadow);
+  overflow: hidden;
 }
 
 .mountain-card {
@@ -182,6 +202,19 @@ button.ghost {
   border-radius: 20px;
   max-width: 260px;
   box-shadow: 0 10px 30px rgba(13, 30, 24, 0.15);
+}
+
+.float-card {
+  animation: float 5.5s ease-in-out infinite;
+}
+
+.lift {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.lift:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(13, 30, 24, 0.15);
 }
 
 .mountain-card h3 {
@@ -273,6 +306,17 @@ button.ghost {
   border: 1px solid rgba(14, 43, 34, 0.1);
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .sustainability {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -341,6 +385,27 @@ button.ghost {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @media (max-width: 900px) {
